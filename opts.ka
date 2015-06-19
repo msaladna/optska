@@ -1,0 +1,19 @@
+# Hooks: #
+on load {
+    if {[catch [load addons/opts.dll]] == 0} {   
+        addecho "opts.ka, uptime fix"
+    } else {
+        echo "opts dll not found!"
+    }
+}
+
+alias uptime {
+    say "uptime([getOS short]): win([since [opts]]) serv([since \
+        c[get_cookie onlinet]]) today([since [get_cookie \
+        onlined]]) xirc([since c$env(cuptime)]) best([since \
+        [get_cookie winuptime [osuptime]]])"
+    complete
+}
+
+addecho "[kano] --(opts.ka)-- version 1.0"
+addname opts.ka 
